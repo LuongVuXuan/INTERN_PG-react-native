@@ -3,7 +3,7 @@ import {View, Text} from 'react-native';
 import styled from 'styled-components/native';
 
 interface Props {
-  //   id: string;
+  id: string;
   // createdAt: Date;
   name: string;
   // email: string;
@@ -11,16 +11,23 @@ interface Props {
   balance: string;
 }
 
-const UserInfo = styled.View`
+const UserInfo = styled.TouchableOpacity`
   margin-vertical: 10;
   margin-horizontal: 10;
   border-width: 1;
   padding-horizontal: 5;
 `;
 
-const UserDetails = ({name, username, balance}: Props) => {
+const UserDetails = ({id, name, username, balance}: Props) => {
+  const handleOnPress = (id) => {
+    console.log(`Press !!! +  ${id}`);
+  };
+
   return (
-    <UserInfo>
+    <UserInfo
+      onPress={() => {
+        handleOnPress(id);
+      }}>
       <Text>Name: {name}</Text>
       <Text>Username: {username}</Text>
       <Text>Balance: {balance}</Text>
