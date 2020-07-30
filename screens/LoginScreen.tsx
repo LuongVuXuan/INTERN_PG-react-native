@@ -24,12 +24,14 @@ export const Title = styled.Text`
 const LoginTitle = styled.Text`
   font-size: 16;
   font-weight: bold;
+  width: 100%;
 `;
 
 const LoginInput = styled.TextInput`
   height: 40;
   border-bottom-width: 1;
   margin-bottom: 10;
+  width: 100%;
 `;
 
 interface Props {}
@@ -57,7 +59,14 @@ const LoginScreen = (props: Props) => {
         <Title>Login Screen</Title>
       </BackgroundTitle>
       <View
-        style={{justifyContent: 'center', marginTop: 20, marginHorizontal: 10}}>
+        style={{
+          flex: 1,
+          alignItems: 'center',
+          justifyContent: 'center',
+          marginTop: 20,
+          marginHorizontal: 10,
+          alignSelf: 'stretch',
+        }}>
         <LoginTitle>Username:</LoginTitle>
         <LoginInput
           placeholder={'User Name'}
@@ -69,7 +78,9 @@ const LoginScreen = (props: Props) => {
           secureTextEntry={true}
           onChangeText={(text) => setPassword(text)}
           value={password}></LoginInput>
-        <Button title={'Submit'} onPress={handleOnPress} />
+        <View style={{width: '100%'}}>
+          <Button title={'Login'} onPress={handleOnPress} />
+        </View>
       </View>
     </View>
   );

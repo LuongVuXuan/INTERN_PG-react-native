@@ -1,14 +1,15 @@
 import React from 'react';
 import {View, Text} from 'react-native';
 import styled from 'styled-components/native';
+import {useNavigation} from '@react-navigation/native';
 
 interface Props {
   id: string;
-  // createdAt: Date;
   name: string;
-  // email: string;
   username: string;
   balance: string;
+  // createdAt: Date;
+  // email: string;
 }
 
 const UserInfo = styled.TouchableOpacity`
@@ -19,8 +20,10 @@ const UserInfo = styled.TouchableOpacity`
 `;
 
 const UserDetails = ({id, name, username, balance}: Props) => {
-  const handleOnPress = (id) => {
-    console.log(`Press !!! +  ${id}`);
+  const navigation = useNavigation();
+  const handleOnPress = (id: string) => {
+    // console.log(`Press !!! +  ${id}`);
+    navigation.navigate('UserDetail', {id});
   };
 
   return (
